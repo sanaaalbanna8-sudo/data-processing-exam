@@ -1,0 +1,10 @@
+1) في Apps Script: امسحي Code.gs بالكامل (Ctrl+A ثم Delete)
+2) افتحي الملف Code.gs من مجلد data-processing-exam
+3) انسخي كل المحتوى من اول سطر: var SHEET_ID
+4) الصقيه في Apps Script ثم Save
+5) Deploy → Manage deployments → Edit → New version → Deploy
+6) انسخي رابط /exec الى js/config.js
+
+لا تلصقي اي شيء فيه كلمة lines او مخرجات ترمينال.
+الملف الصحيح يبدأ بـ:
+var SHEET_ID = "1b3kWogml9sIt4m9IXWpxw0YS_ZX_Eh4RhGXVbBaxyvA";
