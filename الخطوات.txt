@@ -1,10 +1,43 @@
-1) في Apps Script: امسحي Code.gs بالكامل (Ctrl+A ثم Delete)
-2) افتحي الملف Code.gs من مجلد data-processing-exam
-3) انسخي كل المحتوى من اول سطر: var SHEET_ID
-4) الصقيه في Apps Script ثم Save
-5) Deploy → Manage deployments → Edit → New version → Deploy
-6) انسخي رابط /exec الى js/config.js
+اصلاح عدم ظهور النتائج في الجدول
+=================================
 
-لا تلصقي اي شيء فيه كلمة lines او مخرجات ترمينال.
-الملف الصحيح يبدأ بـ:
-var SHEET_ID = "1b3kWogml9sIt4m9IXWpxw0YS_ZX_Eh4RhGXVbBaxyvA";
+السبب الحالي: رابط السكربت يرجع 403 Forbidden
+يعني النشر مضبوط كـ "انا فقط" او بدون صلاحية للجمهور.
+الامتحان يقول "تم الحفظ" شكليًا، لكن جوجل يرفض الطلب.
+
+ Pilلي هيك الان:
+----------------
+1) افتحي الجدول:
+   https://docs.google.com/spreadsheets/d/1b3kWogml9sIt4m9IXWpxw0YS_ZX_Eh4RhGXVbBaxyvA/edit
+
+2) Extensions / اضافات → Apps Script
+
+3) تأكدي ان Code.gs هو ملف Code.gs من مجلد الامتحان
+   (يبدأ بـ var SHEET_ID)
+
+4) احفظي ثم:
+   Deploy → Manage deployments → القلم Edit
+   - Execute as / التنفيذ بصفة: Me / انا
+   - Who has access / من يمكنه الوصول: Anyone / اي شخص
+     (مهم جدًا: ليس Only myself)
+   - Version: New version
+   - Deploy
+
+5) انسخي رابط /exec الجديد (قد يتغير بعد اعادة النشر)
+
+6) ضعيه في:
+   js/config.js
+   ثم ادفعه لـ GitHub اذا البنات يفتحن من GitHub Pages
+
+7) افتحي رابط /exec في المتصفح
+   لازم يطلع فقط: OK
+   اذا طلع تسجيل دخول او خطأ = النشر لسه مش Anyone
+
+8) امتحني باسمك مرة واحدة
+   ثم راجعي ورقة: امتحان المعالجة - ملخص
+   (ليس اوراق الطرفية)
+
+ملاحظات:
+- اذا حساب المدرسة يمنع Anyone: اختاري Anyone in your organisation
+  والبنات لازم يكن مسجلات بحساب المدرسة على جوجل
+- اول مرة قد يطلب السكربت موافقة على الوصول للجدول: Allow / سماح

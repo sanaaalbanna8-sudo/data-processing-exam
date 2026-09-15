@@ -608,11 +608,12 @@ function submitExam(timedOut) {
 }
 
 function renderResult(g) {
-  let send = `<p class="send-status bad">تعذّر حفظ البيانات. أخبر المعلم بالاسم والدرجة ${g.percent}%.</p>`;
   if (state.sendNote === "sent") {
-    send = `<p class="send-status ok">تم حفظ البيانات.</p>`;
+    send = `<p class="send-status ok">تم إرسال البيانات إلى السحابة. إن لم تظهر في الجدول خلال دقيقة: تأكدي أن نشر Apps Script على Anyone.</p>`;
   } else if (state.sendNote === "missing") {
     send = `<p class="send-status bad">لم يُضبط رابط الجدول بعد. سجّل الدرجة يدويًا: ${g.percent}% (${g.earned}/${g.max}).</p>`;
+  } else {
+    send = `<p class="send-status bad">تعذّر حفظ البيانات. أخبر المعلم بالاسم والدرجة ${g.percent}%.</p>`;
   }
   $app.innerHTML = `
     <p class="kicker">نتيجة ${esc(state.name)}</p>
